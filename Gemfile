@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in es-ruby-entity-centric-indexing-example.gemspec
-gemspec
+ruby '2.3.1'
+
+gem 'elasticsearch', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
+gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'zip', '~> 2.0', '>= 2.0.2'

@@ -1,0 +1,125 @@
+# Use regexp to hack around rubocop's poor pattern matching
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+    - !ruby/regexp /(?:^|\/)(?:Rakefile|config.ru)$/
+  Exclude:
+    - '**/bin/**/*'
+    - '**/db/**/*'
+    - '**/vendor/**/*'
+    - !ruby/regexp /(?:^|\/)(?:bin|db|vendor)\//
+
+  TargetRubyVersion: 2.3
+
+
+Style/AccessModifierIndentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - '**/lib/client/*/concerns/**/*'
+
+Style/CollectionMethods:
+  PreferredMethods:
+    inject:
+
+Style/Documentation:
+  Enabled: false
+
+# Use regexp to hack around rubocop's poor pattern matching
+Style/FileName:
+  Exclude:
+    - '**/Berksfile'
+    - '**/Capfile'
+    - '**/Cheffile'
+    - '**/Guardfile'
+    - '**/Gemfile'
+    - '**/Podfile'
+    - '**/Rakefile'
+    - '**/Thorfile'
+    - '**/Vagrantfile'
+    - '**/*.gemspec'
+    - !ruby/regexp /(?:^|\/)(?:Berks|Cap|Chef|Guard|Gem|Pod|Rake|Thor|Vagrant)file$/
+    - !ruby/regexp /\.gemspec$/
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+# l.() vs l.call()
+Style/LambdaCall:
+  Enabled: false
+
+Style/LeadingCommentSpace:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/NumericLiterals:
+  MinDigits: 17
+
+Style/RedundantSelf:
+  Enabled: true
+
+Style/RegexpLiteral:
+  Exclude:
+    - '**/Guardfile'
+    - !ruby/regexp /(?:^|\/)Guardfile$/
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/Semicolon:
+  Enabled: false
+
+# fail vs raise
+Style/SignalException:
+  Enabled: false
+
+Style/SpaceBeforeFirstArg:
+  Enabled: false
+
+Style/SpaceAroundEqualsInParameterDefault:
+  Enabled: false
+
+Style/SpaceInsideBrackets:
+  Enabled: false
+
+Style/TrivialAccessors:
+  ExactNameMatch: true
+  AllowPredicates: true
+  AllowDSLWriters: true
+
+Style/WordArray:
+  MinSize: 2
+
+## Metrics
+
+Metrics/AbcSize:
+  Max: 30
+  Severity: refactor
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Severity: refactor
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Severity: refactor
