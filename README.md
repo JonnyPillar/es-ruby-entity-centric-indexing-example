@@ -1,0 +1,1 @@
+# es-ruby-entity-centric-indexing-example
