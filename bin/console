@@ -1,19 +1,12 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "../lib/Import/review_data"
-require "../lib/ES/scan"
-require "../lib/ES/reviews"
-require "../lib/ES/profiles"
-require "../lib/ES/review_action_generator"
-require "../lib/ES/entity_centric_indexing"
+require "../lib/import/review_data"
+require "../lib/elastic/helpers/scan"
+require "../lib/elastic/indices/reviews"
+require "../lib/elastic/indices/profiles"
+require "../lib/elastic/review_action_generator"
+require "../lib/elastic/entity_centric_indexing"
 
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
-
-# (If you use this, don't forget to add pry to your Gemfile!)
 require "pry"
 Pry.start
-
-# require "irb"
-# IRB.start

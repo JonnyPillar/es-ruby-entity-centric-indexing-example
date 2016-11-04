@@ -1,4 +1,4 @@
-module ES
+module Elastic
   class ReviewActionGenerator
     REVIEW_UPDATE_SCRIPT_NAME = 'ReviewerProfileUpdater'.freeze
     REVIEW_UPDATE_SCRIPT_MODE = 'fullBuild'.freeze

@@ -1,7 +1,7 @@
 require 'elasticsearch'
 require 'json'
 
-module ES
+module Elastic
   class EntityCentricIndexing
     def process_reviews
       reviews do |review_page|
@@ -12,21 +12,21 @@ module ES
     end
 
     def generate_profiles
-      ES::Profiles.bulk_upsert(actions)
+      Elastic::Indices::Profiles.bulk_upsert(client, actions)
+    end
+
+    def actions
+      review_generator.actions
     end
 
     private
 
-    def actions
-      @actions ||= review_generator.actions
-    end
-
     def review_generator
-      @review_generator = ES::ReviewActionGenerator.new
+      @review_generator ||= Elastic::ReviewActionGenerator.new
     end
 
     def reviews
-      ES::Reviews.get(client) do |doc|
+      Elastic::Indices::Reviews.get(client) do |doc|
         yield doc
       end
     end
