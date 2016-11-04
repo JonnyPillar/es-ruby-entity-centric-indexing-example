@@ -1,3 +1,3 @@
-# es-ruby-entity-centric-indexing-example
+# Entity Centric Indexing Ruby Example
 
-This is a ruby port of the example provided in https://www.youtube.com/watch?v=yBf7oeJKH2Y
+This is a very basic ruby port of the example provided in https://www.youtube.com/watch?v=yBf7oeJKH2Y by Mark Harwood
