@@ -44,17 +44,12 @@ module Import
 
       def process_actions(actions)
         return if actions.empty?
-
-        begin
-          client.bulk body: actions
-        rescue
-          puts 'ERRRROOORRRR'
-        end
+        client.bulk body: actions
       end
 
       def reset_review_index
         client.indices.delete(index: REVIEW_INDEX, ignore: [400, 404])
-        client.indices.create(index: REVIEW_INDEX, body: index_settings)
+        client.indices.create(index: REVIEW_INDEX, body: review_mapping)
       end
 
       def parse_action(row)
@@ -80,7 +75,7 @@ module Import
         @client ||= Elasticsearch::Client.new(log: true)
       end
 
-      def index_settings
+      def review_mapping
         {
           "settings": {
             "number_of_shards": 1,

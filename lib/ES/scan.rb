@@ -1,18 +1,21 @@
 module ES
   class Scan
-    def self.scan(client, args, &block)
-      search = client.search(
-        index: args[:index],
-        # doc_type: args[:doc_type],
-        body: args[:query],
-        search_type: 'scan',
-        scroll: '5m',
-        size: args[:size],
-        # preserve_order: args[:preserve_order]
-      )
+    class << self
+      SCAN_SEARCH_TYPE = 'scan'.freeze
+      MAX_TIME_TO_PROCESS_SCROLL_PAGE = '5m'.freeze
 
-      while search = client.scroll(scroll_id: search['_scroll_id'], scroll: '5m') and not search['hits']['hits'].empty? do
-        yield search['hits']['hits']
+      def scan(client, args)
+        search = client.search(
+          index: args[:index],
+          body: args[:query],
+          search_type: SCAN_SEARCH_TYPE,
+          scroll: MAX_TIME_TO_PROCESS_SCROLL_PAGE,
+          size: args[:size]
+        )
+
+        while search = client.scroll(scroll_id: search['_scroll_id'], scroll: MAX_TIME_TO_PROCESS_SCROLL_PAGE) and not search['hits']['hits'].empty? do
+          yield search['hits']['hits']
+        end
       end
     end
   end

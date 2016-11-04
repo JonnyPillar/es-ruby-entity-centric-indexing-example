@@ -3,6 +3,9 @@
 require "bundler/setup"
 require "../lib/Import/review_data"
 require "../lib/ES/scan"
+require "../lib/ES/reviews"
+require "../lib/ES/profiles"
+require "../lib/ES/review_action_generator"
 require "../lib/ES/entity_centric_indexing"
 
 # You can add fixtures and/or initialization code here to make experimenting
